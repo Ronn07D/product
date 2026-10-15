@@ -65,9 +65,22 @@ def update_product():
 
             print("Producto actualizado")
 
+def delete_product():
+    with app.app_context():
+        print("\neliminacion de registros")
+        producto = Product.query.filter_by(id=3).first()
+
+        if producto:
+            db.session.delete(producto)
+            db.session.commit()
+            print("Producto eliminado")
+
+        else:
+            print("usuario no encontrado")
+
 if __name__ == "__main__":
     #init_db()
     #insert_product()
-    #query_products()
-    update_product()
+    query_products()
+    #update_product()
     #delete_product()
