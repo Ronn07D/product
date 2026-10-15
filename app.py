@@ -38,10 +38,22 @@ def insert_product():
         db.session.commit()
         print("Producto insertado")
 
+def query_products():
+    with app.app_context():
+        print("listsa de productos")
+        productos = Product.query.all()
+        for p in productos:
+            print(p)
+
+        print("\nobtencion de un solo producto")
+        producto = Product.query.filter_by(id=2).first()
+
+        if producto:
+            print(producto)
 
 if __name__ == "__main__":
     #init_db()
-    insert_product()
-    #query_products()
+    #insert_product()
+    query_products()
     #update_product()
     #delete_product()
