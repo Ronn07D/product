@@ -51,9 +51,23 @@ def query_products():
         if producto:
             print(producto)
 
+
+def update_product():
+    with app.app_context():
+
+        producto = Product.query.filter_by(id=1).first()
+
+        if producto:
+            producto.price = 5000
+            producto.stock = 15
+
+            db.session.commit()
+
+            print("Producto actualizado")
+
 if __name__ == "__main__":
     #init_db()
     #insert_product()
-    query_products()
-    #update_product()
+    #query_products()
+    update_product()
     #delete_product()
