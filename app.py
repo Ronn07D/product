@@ -25,10 +25,23 @@ def init_db():
         db.create_all()
         print("Tablas creadas exitosamente")
 
+def insert_product():
+    with app.app_context():
+        p1 = Product(name="Laptop",price=4500.50,stock=10)
+        p2 = Product(name="celular",price=3500.50,stock=5)
+        p3 = Product(name="pantalla",price=2500.50,stock=3)
+
+        db.session.add(p1)
+        db.session.add(p2)
+        db.session.add(p3)
+
+        db.session.commit()
+        print("Producto insertado")
+
 
 if __name__ == "__main__":
-    init_db()
-    #insert_product()
+    #init_db()
+    insert_product()
     #query_products()
     #update_product()
     #delete_product()
